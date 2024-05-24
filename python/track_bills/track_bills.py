@@ -8,7 +8,7 @@ from pathlib import Path
 # Set environment config
 find_key = 'track_bills'
 cwd = Path(__file__).parents[0]
-config_path = Path(__file__).parents[1]
+config_path = Path(__file__).parents[3]
 config_file = os.path.join(config_path, 'config.json')
 
 # Load/parse JSON config
