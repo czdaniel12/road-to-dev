@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "random_pw_gen/1.0.0": {
+        "runtime": {
+          "random_pw_gen.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "random_pw_gen/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

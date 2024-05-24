@@ -1,0 +1,49 @@
+[
+    {
+        "type": "memorial",
+        "latitude": 32.14998889,
+        "longitude": 110.83584167,
+        "capacity": 12.87,
+        "date": "2017-06-20"
+    },
+    {
+        "type": "landscape",
+        "latitude": 33.747252,
+        "longitude": 112.633853,
+        "capacity": 15.00,
+        "date": "2017-08-18"
+    },
+    {
+        "type": "lakes",
+        "latitude": 41.303921,
+        "longitude": 81.901693,
+        "capacity": 8.66,
+        "date": "2017-10-05"
+    },
+    {
+        "type": "landscape",
+        "latitude": 51.848637,
+        "longitude": 0.55462,
+        "capacity": 4.50,
+        "date": "2021-05-13"
+    },
+    {
+        "type": "random",
+        "latitude": 37.7749,
+        "longitude": 50.4194,
+        "capacity": 4.12,
+        "date": "2021-05-04"
+    },
+    {
+        "type": 1,
+        "errorError": "you've been hacked",
+        "longitude": 50.4194,
+        "date": "11-11-1111"
+    }
+]
+
+
+
+
+
+
