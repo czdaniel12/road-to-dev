@@ -1,4 +1,9 @@
+# Ignore certain config
 config.json
+# Ignore python
+python/track_bills/expense_report.txt
+# Ignore C#
 c_sharp/obj/
 c_sharp/random_pw_gen/
 Coding.sln
+
