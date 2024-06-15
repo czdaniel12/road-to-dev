@@ -1,4 +1,3 @@
-# Coding assessment for Blacksky
 # Put or create all associated files in same dir
 
 # Import modules
@@ -14,7 +13,7 @@ cur_hour = time.strftime("%H:%M:%S")
 cur_time = cur_day + ":" + cur_hour
 
 # Input/Output files
-input_file = 'blacksky_input.json'
+input_file = 'input.json'
 output_file_pass = 'output_pass.json'
 output_file_fail = 'output_fail.json'
 error_log = 'error.log'

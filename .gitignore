@@ -1,7 +1,10 @@
 # Ignore certain config
-config.json
+Config/*
 # Ignore python
-python/track_bills/expense_report.txt
+Python/Bill Tracking/expense_report.txt
+Python/Password Generator/user_config.json
+Config/*
+
 # Ignore C#
 c_sharp/obj/
 c_sharp/random_pw_gen/
