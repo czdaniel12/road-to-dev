@@ -55,7 +55,7 @@ def verify_user():
         db_connection = mysql.connector.connect(
             host="localhost",
             user="pw_admin",
-            password="jadP1!G%u86Ct%2rFz4H"
+            password=""
         )
 
         select_db = "use pw_manager;"

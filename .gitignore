@@ -1,5 +1,5 @@
 # Ignore certain config
-Config/*
+Config/config.json
 # Ignore python
 Python/Bill Tracking/expense_report.txt
 Python/Password Generator/user_config.json
