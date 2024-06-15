@@ -3,7 +3,8 @@ Config/config.json
 # Ignore python
 Python/Bill Tracking/expense_report.txt
 Python/Password Generator/user_config.json
-Config/*
+Python/Config/users.json
+Python/Config/sql_config.json
 
 # Ignore C#
 c_sharp/obj/
