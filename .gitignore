@@ -5,6 +5,7 @@ Python/Bill Tracking/expense_report.txt
 Python/Password Generator/user_config.json
 Python/Config/users.json
 Python/Config/sql_config.json
+Python/Config/pw_gen_users.json
 
 # Ignore C#
 c_sharp/obj/

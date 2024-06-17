@@ -2,20 +2,30 @@
 
 # Import modules
 import os
+import sys  
 import random
 import string
 import json
 import mysql.connector
 from time import sleep
 
-# Input/output files
-input_file1 = 'users.txt'
-input_file2 = 'user_config.json'
+root_dir = os.path.abspath('..')
+sys.path.append(root_dir)
+import py_utils
 
-# Get working dir
-current_dir = os.path.dirname(__file__)
-u_config1 = os.path.join(current_dir, input_file1)
-u_config2 = os.path.join(current_dir, input_file2)
+# Config parameters for py_utils
+has_sql = True
+config_type = 'json'
+key_name = 'password_generator'
+database_type = 'mysql'
+
+# Load JSON input data
+user_data, output_file = py_utils.file_input_output(key_name)
+
+# Get SQL connection if uses db
+sql_auth = {}
+if has_sql:
+    sql_auth = py_utils.load_sql_auth(has_sql, database_type)
 
 # Prompts
 greeting = "\nWelcome to the Python Password Generator!"
@@ -29,13 +39,6 @@ special_char = string.punctuation
 alpha_upper = string.ascii_uppercase
 alpha_lower = string.ascii_lowercase
 numbers = string.digits
-
-# Load JSON config
-def load_json():
-    with open(u_config2, 'r') as f:
-        data = json.load(f)
-
-    return data
 
 # Connect to DB and verify if user exists already
 def verify_user():

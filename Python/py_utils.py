@@ -12,10 +12,11 @@ config_dir = os.path.join(current_dir, 'Config')
 
 # Path to configuration files
 sql_config = 'sql_config.json'
-json_config = 'script_config.json'
-xml_config_path = 'script_config.xml'
+script_config = 'script_config.json'
 user_config = 'users.json'
+
 vehicle_config = 'vehicles.json'
+pw_gen_config = 'pw_gen_users.json'
 
 class LoadConfig():
     def __init__(self, use_sql, config_type, key_name, database_type) -> None:
@@ -28,25 +29,38 @@ class LoadConfig():
             pass
 
 
-# Load JSON config file(s)
-def load_json(use_key, email=''):
-    json_file = os.path.join(config_dir, json_config)
-    with open(json_file) as j:
-        data = json.load(j)
+# Return input/output files per script
+def load_json(key_name='', has_sql=False, database_type=''):
+    get_input_output = os.path.join(config_dir, script_config)
+    get_sql_auth = os.path.join(config_dir, sql_config)
     
-    for items in data:
-        input_file = items[use_key]['input']
-        output_file = items[use_key]['output']
+    with open(get_input_output) as f:
+        file_io = json.load(f)
+    for items in file_io:
+        input_file = items[key_name]['input']
+        output_file = items[key_name]['output']
+
+    if has_sql:
+        with open(get_sql_auth) as s:
+            sql_auth = json.load(s)
+    for items in sql_auth:
+        sql_data = items[database_type]
+
 
     return input_file, output_file
+
+
 
 # Get input/output files based on config type
 def file_input_output(config_type, use_key):
     if config_type == 'json':
         return load_json(use_key)
+    elif config_type == 'xml':
+        pass
 
 # Return remote SQL credentials
 def load_sql_auth(db):
+    find_sql = os.path.join(config_dir, sql_config)
     pass
 
 def get_user():
@@ -61,16 +75,6 @@ def get_user():
                 print('Email is not a valid format or does not exist. Pleaes re-enter.')
         except KeyboardInterrupt:
             exit
-
-class Users():
-    def __init__(self) -> None:
-        self.user = get_user()
-
-        def get_name(self):
-            pass
-
-
-
 
 def create_user():
     first_name = input('First name: ').title().strip()

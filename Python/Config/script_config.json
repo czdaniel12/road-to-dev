@@ -18,8 +18,9 @@
         },
         "password_generator": {
             "path": "../Password_Generator/",
-            "input": "",
-            "output": ""
+            "input": "pw_gen_users.json",
+            "output": "password.log",
+            "database": ""
         }
     }
 ]
