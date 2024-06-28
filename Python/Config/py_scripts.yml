@@ -1,0 +1,12 @@
+# Python script configuration
+---
+scripts:
+  - id: maintenance
+    database: 
+      name: uat_dev
+    files:
+  - id: finances
+    database:
+      name: uat_dev
+    files:
+...
