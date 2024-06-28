@@ -11,13 +11,14 @@ from time import sleep
 
 root_dir = os.path.abspath('..')
 sys.path.append(root_dir)
-import py_utils
+import cfg_loader
 
 # Config parameters for py_utils
 has_sql = True
 config_type = 'json'
 key_name = 'password_generator'
 database_type = 'mysql'
+
 
 # Load JSON input data
 user_data, output_file = py_utils.file_input_output(key_name)
