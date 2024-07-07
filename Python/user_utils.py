@@ -3,7 +3,7 @@
 # Import Modules
 import re
 import sys
-import Python.cfg_loader as cfg_loader
+import cfg_loader
 from sql_loader import LoadSQL
 
 # Config
@@ -42,7 +42,7 @@ def yes_no_prompt():
             else:
                 print(invalid)
         except KeyboardInterrupt:
-            exit
+            sys.exit()
 
 def get_email():
     while True:
@@ -56,7 +56,7 @@ def get_email():
             else:
                 print(email_invalid)
         except KeyboardInterrupt:
-            sys.exit(1)
+            sys.exit()
 
 def get_name():
     while True:
@@ -69,20 +69,19 @@ def get_name():
                 print(name_confirm + f'{first_name} {last_name}')
                 if yes_no_prompt():
                     return first_name, last_name
-                else:
-                    continue
-            else:
-                print(name_invalid)
+            #else:
+                #print(name_invalid)
+        except (TypeError, ValueError):
+            print(name_invalid)
         except KeyboardInterrupt:
             print('Goodbye')
-            exit
+            sys.exit()
 
 def verify_user(email):
     for data in config_data:
-        for v in data.values():
-            if email in v['email']:
-                uid = v['uid']
-                return uid     
+        for uid, user_data in data['users'].items():
+            if email in user_data['email']:
+                return uid
 
 def create_account(email):
     print(account_invalid + f'\'{email}\'')
@@ -94,39 +93,35 @@ def create_account(email):
                 return fname, lname
             else:
                 sys.exit()
-        except KeyboardInterrupt():
+        except KeyboardInterrupt:
             sys.exit()
 
-def add_profile(email, fname, lname, script_key):
-    for data in config_data:
-        uid = len(data) + 1
+def create_user(email, fname, lname):
+    user_data = config_data[0]["users"]
+    if not user_data:
+        uid = 1
+    else:
+        uid = max(int(key) for key in user_data.keys()) + 1
 
-    new_user = {
-        uid: {
-            "uid": uid,
-            "email": email
-        }
+    user_data[str(uid)] = {
+        "uid": uid,
+        "email": email,
+        "fname": fname,
+        "lname": lname,
+        "status": "Active"
     }
 
-    cfg_loader.append_user(new_user)
-
-'''
-    new_user_old = f'{uid}: {
-    "uid": {uid},
-    "email": {email},
-    "fname": {fname},
-    "lname": {lname},
-    "status": "Active"}'
-'''
+    cfg_loader.append_user(config_data)
 
 
-def main(script_key=''):
+def main():
     email = get_email()
     uid = verify_user(email)
 
     if not uid:
+        print(email)
         fname, lname = create_account(email)
-        add_profile(fname, lname, email, script_key)
+        create_user(email, fname, lname)
 
     return uid
 

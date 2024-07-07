@@ -21,17 +21,11 @@ def load_json(file):
         data = json.load(f)
         return data
 
-def append_user(new_user):
+def append_user(data):
     json_file = os.path.join(config_dir, users_config)
-    data = []
-    with open(json_file) as j:
-        data = json.load(j)
-        data.append(new_user)
-
     with open(json_file, 'w') as f:
-        json.dump(data, f, indent=4, separators=(',',': '))
-        
-        
+        json.dump(data, f, indent=4, separators=(',', ': '))
+
 def load_yaml(file):
     config_file = os.path.join(config_dir, file)
     with open(config_file) as f:

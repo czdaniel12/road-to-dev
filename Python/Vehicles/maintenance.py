@@ -6,7 +6,7 @@ import sys
 
 root_dir = os.path.abspath('..')
 sys.path.append(root_dir)
-import Python.cfg_loader as cfg_loader
+import cfg_loader
 import user_utils as u
 from sql_loader import LoadSQL
 
@@ -22,7 +22,7 @@ if use_database:
 
 
 def main():
-    uid = u.main(script_key)
+    uid = u.main()
     
 if __name__ == "__main__":
     main()

@@ -3,7 +3,7 @@
 # Import Modules
 import sys
 import mariadb
-import Python.cfg_loader as cfg_loader
+import cfg_loader
 
 # Fetch data from SQL config file
 config_file = 'sql_config.json'
