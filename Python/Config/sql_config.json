@@ -1,0 +1,19 @@
+[
+    {
+        "uat_dev": {
+            "user_r": "remote_admin",
+            "user_h": "home_admin",
+            "password": "$checter%Guitar22022!",
+            "host": "ec2-54-87-7-111.compute-1.amazonaws.com",
+            "port": 3306,
+            "database": "uat_dev"
+        },
+        "uat_dev_old": {
+            "user": "root",
+            "password": "",
+            "host": "ec2-54-87-7-111.compute-1.amazonaws.com",
+            "port": 3306,
+            "database": "uat_dev"
+        }
+    }
+]
