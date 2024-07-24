@@ -1,1 +1,1 @@
-Amateur dev space
+Some personal projects for development experience.
