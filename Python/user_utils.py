@@ -4,7 +4,8 @@
 import re
 import sys
 import cfg_loader
-from sql_loader import LoadSQL
+import sql_loader
+#from sql_loader import LoadSQL
 
 # Config
 config_file = 'users.json'
@@ -81,7 +82,9 @@ def verify_user(email):
     for data in config_data:
         for uid, user_data in data['users'].items():
             if email in user_data['email']:
-                return uid
+                first_name = user_data['fname']
+                last_name = user_data['lname']
+                return uid, first_name, last_name
 
 def create_account(email):
     print(account_invalid + f'\'{email}\'')
@@ -96,7 +99,7 @@ def create_account(email):
         except KeyboardInterrupt:
             sys.exit()
 
-def create_user(email, fname, lname):
+def create_user(email, fname, lname, db_name):
     user_data = config_data[0]["users"]
     if not user_data:
         uid = 1
@@ -112,18 +115,29 @@ def create_user(email, fname, lname):
     }
 
     cfg_loader.append_user(config_data)
+    
+    # Evaluate INSERT statement
+    # Need to decide on either adding uid manually or keep as auto increment
+    sql = sql_loader.LoadSQL(db_name)
+    result = sql.query(
+        'INSERT INTO users (Email, FirstName, LastName, CreatedOn, UpdatedOn, Status) VALUES (?, ?, ?, Now(), Now(), Active)', 
+        (email, fname, lname,)
+        ) 
 
+    return uid
 
-def main():
+def main(db_name):
     email = get_email()
-    uid = verify_user(email)
+    uid, fname, lname = verify_user(email)
 
     if not uid:
         print(email)
         fname, lname = create_account(email)
-        create_user(email, fname, lname)
+        uid = create_user(email, fname, lname, db_name)
+    else:
+        print(f'Welcome back, {fname} {lname}!')
 
-    return uid
+    return uid, fname, lname
 
 if __name__ == '__main__':
     main()
